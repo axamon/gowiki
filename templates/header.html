@@ -4,12 +4,12 @@
     <style>
       body {
           background-color: lightblue;
+          margin: 0;
         }
-        .title{
-          position: fixed;
+        .title{   
           text-align: left;
           color: blue;
-          top: 2px;
+          top: 40px;
           width: 95%;
           font-size: xx-large;
           font-style: bold;
@@ -54,9 +54,43 @@
         margin-right: auto;
         width: 50%;
       }
+      ul.topnav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+
+      ul.topnav li {float: left;}
+
+      ul.topnav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+      ul.topnav li a.active {background-color: #4CAF50;}
+
+      ul.topnav li.right {float: right;}
+
+      @media screen and (max-width: 600px) {
+        ul.topnav li.right, 
+        ul.topnav li {float: none;}
+      }
     </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
+  <ul class="topnav">
+    <li><a class="active" href="/">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li class="right"><a href="#about">About</a></li>
+  </ul>
   {{ end }}

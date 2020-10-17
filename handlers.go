@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"net/http"
 	"regexp"
+	"sort"
 )
 
 var templates = template.Must(template.ParseFiles("templates/page.html", "templates/header.html", "templates/index.html", "templates/edit.html", "templates/view.html", "templates/footer.html"))
@@ -39,6 +40,9 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	for _, v := range m {
 		pages = append(pages, v)
 	}
+	sort.Slice(pages, func(i, j int) bool {
+		return pages[i].Title < pages[j].Title
+	})
 	err := templates.ExecuteTemplate(w, "index.html", pages)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
