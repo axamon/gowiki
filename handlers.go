@@ -34,8 +34,12 @@ func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-
-	err := templates.ExecuteTemplate(w, "index.html", nil)
+	getPages()
+	var pages []*Page
+	for _, v := range m {
+		pages = append(pages, v)
+	}
+	err := templates.ExecuteTemplate(w, "index.html", pages)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
