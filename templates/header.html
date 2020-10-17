@@ -1,6 +1,7 @@
 {{ define "header" }}
 <html>
   <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
       body {
           background-color: lightblue;
@@ -82,13 +83,32 @@
         ul.topnav li.right, 
         ul.topnav li {float: none;}
       }
+      aside {
+        width: 40%;
+        padding-left: .5rem;
+        margin-left: .5rem;
+        float: right;
+        box-shadow: inset 5px 0 5px -5px #29627e;
+        font-style: italic;
+        color: #29627e;
+      }
+
+      aside > p {
+          margin: .5rem;
+      }
+
+      p {
+          font-family: 'Fira Sans', sans-serif;
+      }
     </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
   <ul class="topnav">
-    <li><a class="active" href="/">Home</a></li>
+    <li>
+      <a class="active" href="/"><i class="fa fa-fw fa-home"></i> Home</a>
+    </li>
     <li><a href="#news">News</a></li>
     <li><a href="#contact">Contact</a></li>
     <li class="right"><a href="#about">About</a></li>
