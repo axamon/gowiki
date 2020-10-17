@@ -2,17 +2,19 @@ package main
 
 import (
 	"encoding/gob"
-	"fmt"
 	"log"
 	"os"
+	"sync"
 )
 
 var gobfile = "pages.gob"
 
 var m = make(map[string]*Page)
+var lock sync.Mutex
 
 func savePages() {
-
+	lock.Lock()
+	defer lock.Unlock()
 	dataFile, err := os.Create(gobfile)
 	if err != nil {
 		log.Println(err)
@@ -25,7 +27,8 @@ func savePages() {
 }
 
 func getPages() {
-
+	lock.Lock()
+	defer lock.Unlock()
 	// open data file
 	dataFile, err := os.Open(gobfile)
 	if err != nil {
@@ -37,6 +40,6 @@ func getPages() {
 	err = dataDecoder.Decode(&m)
 
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	}
 }
