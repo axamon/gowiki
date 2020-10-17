@@ -6,4 +6,5 @@ type Page struct {
 	Body      string
 	TimeStamp string
 	Category  string
+	Author    string
 }
