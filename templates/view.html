@@ -1,0 +1,12 @@
+  {{ template "header" }}
+
+    <h1 class="title">{{.Title}}</h1>
+    <br>
+    <br>
+    <br>
+    <p>[<a href="/edit/{{.Title}}">modifica</a>]</p>
+    <p>Ultima modifica: {{.TimeStamp}}</p>
+
+    {{.Body}}
+
+  {{ template "footer" }}
